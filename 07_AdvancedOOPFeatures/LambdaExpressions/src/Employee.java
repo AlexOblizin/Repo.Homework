@@ -1,3 +1,4 @@
+import javax.annotation.processing.Generated;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -13,6 +14,7 @@ public class Employee
         this.salary = salary;
         this.workStart = workStart;
     }
+
 
     public String getName() {
         return name;
