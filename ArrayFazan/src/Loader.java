@@ -13,10 +13,8 @@ public class Loader {
         System.out.println();
         System.out.println("В одну строку задом наперёд:");
         System.out.println();
-        for (int i = 0; i < arrayFazan.length; i++) { //вывод полученного массива
-
-            System.out.print(arrayFazan[i] + " ");
-
+        for(String str : arrayFazan){
+            System.out.print(str.toLowerCase() + " ");
         }
         System.out.println();
 
