@@ -139,10 +139,6 @@ public class Cat {
         }
     }
 
-    /*public void drink(double amount) {
 
-        if (catAlive = true) weight += amount;
-
-    }*/
 
 }
