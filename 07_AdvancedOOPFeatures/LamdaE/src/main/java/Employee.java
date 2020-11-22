@@ -4,12 +4,12 @@ import lombok.Getter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
+@Data
 public class Employee
 {
-    @Getter private String name;
-    @Getter private Integer salary;
-    @Getter private Date workStart;
+    private String name;
+    private Integer salary;
+    private Date workStart;
 
         public Employee(String name, Integer salary, Date workStart)
     {

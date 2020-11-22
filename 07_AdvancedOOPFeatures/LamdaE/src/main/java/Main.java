@@ -2,42 +2,27 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Main {
     private static String staffFile = "data/staff.txt";
     private static String dateFormat = "dd.MM.yyyy";
 
     public static void main(String[] args) {
+
         List<Employee> staff = loadStaffFromFile();
 
+        staff.stream().sorted((o1, o2) -> {
 
+            int str = o1.getSalary().compareTo(o2.getSalary());
 
-//        List<Employee> staffSorted = staff.stream()
-//                .sorted((o1,o2) -> o1.getSalary().compareTo(o2.getSalary()))
-//                .collect(Collectors.toList());
-//        staffSorted.forEach(System.out::println);
-//        System.out.println();
-//
-//        staffSorted.stream().sorted((o1,o2)-> o1.getName().compareTo(o2.getName())).forEach(System.out::println);
-
-        List<Employee> sortedStaff;
-        sortedStaff = staff.stream().sorted((o1,o2) -> {
-            if (o1.getSalary() > o2.getSalary()) {
-                return 1;
-            }
-            else if (o1.getSalary() < o2.getSalary()) {
-                return -1;
+            if (str == 0) {
+                return o1.getName().compareTo(o2.getName());
             }
             else {
-                return 0;
+                return str;
             }
 
-        }).sorted((o1, o2) -> o1.getName().compareTo(o2.getName())).collect(Collectors.toList());
-
-        sortedStaff.forEach(System.out::println);
-
-
+        }).forEach(System.out::println);
 
     }
 
@@ -64,5 +49,4 @@ public class Main {
         }
         return staff;
     }
-
 }
