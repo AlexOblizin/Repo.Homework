@@ -1,5 +1,3 @@
-import com.skillbox.airport.*;
-
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;

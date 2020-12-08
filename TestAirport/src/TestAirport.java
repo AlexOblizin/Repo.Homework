@@ -1,28 +1,31 @@
 import com.skillbox.airport.*;
 
-
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.*;
 
 public class TestAirport {
-    public static void main(String[] args)
-    {
-    Airport airport = Airport.getInstance();
 
-    //похоже список рандомный, как по названиям так и по количеству самолётов
-    System.out.println("Список самолетов в аэропорту: \n" + airport.getAllAircrafts()); //вывод в одну
-                                                                                       // некрасивую, длинную строчку)
-    System.out.println();
-    System.out.println("Количество самолетов в аэропорту: " + airport.getAllAircrafts().size() + "\n");
+    public static void main(String[] args) {
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime twoHours = LocalDateTime.now().plusHours(2);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm (dd.MM.yyyy)");
 
-    //а так выведу красиво - сверху вниз)
-    for (Aircraft element : airport.getAllAircrafts())
-    {
-        System.out.println(element);
+        Airport airport = Airport.getInstance();
+
+
+        airport.getTerminals().stream()
+                .flatMap(a -> a.getFlights().stream())
+                .filter(b -> {
+                    LocalDateTime localDateTime = dateToLocalDate(b.getDate());
+                    return localDateTime.isAfter(now) && localDateTime.isBefore(twoHours) && b.getType() == Flight.Type.DEPARTURE;
+                })
+                .forEach(c -> System.out.println("\"" + c.getAircraft().getModel() + "\"" + " --- " + simpleDateFormat.format(c.getDate())));
+
     }
-    System.out.println("Количество самолетов в аэропорту: " + airport.getAllAircrafts().size());
 
-
-
-
-
+    public static LocalDateTime dateToLocalDate(Date date) {
+        return date.toInstant().atZone(ZoneOffset.UTC).toLocalDateTime();
     }
 }
