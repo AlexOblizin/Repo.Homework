@@ -1,0 +1,9 @@
+
+O
+java:S1128"4Remove this unused import 'java.util.regex.Pattern'.(Ã•…Äúÿÿÿÿ
+J
+java:S1128"4Remove this unused import 'java.util.regex.Matcher'.(ëÅ›ã
+N	java:S106'"9Replace this use of System.out or System.err by a logger.(’»ùÂ
+_
+java:S2147"DCombine this catch with the one at line 23, which has the same body.(æğÔëşÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(‰×€ü
